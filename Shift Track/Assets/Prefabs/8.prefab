@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9176192102356701488}
   - component: {fileID: 1973013557671400687}
   - component: {fileID: 2908313601808009944}
+  - component: {fileID: 1192808043455900973}
   m_Layer: 0
   m_Name: Road
   m_TagString: puzzle
@@ -47,6 +48,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -108,6 +110,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &1192808043455900973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438581234104975808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7594e5ad02230ca4d8e8e369a19fc1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrance: 0
+  exit: 0
 --- !u!1 &3532245817382449607
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +171,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

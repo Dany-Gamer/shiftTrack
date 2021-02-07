@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -163,6 +164,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lower simple road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338790279045911065, guid: cc293899f0b6fc24c83d82d6c63d704e,
+        type: 3}
+      propertyPath: entrance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338790279045911065, guid: cc293899f0b6fc24c83d82d6c63d704e,
+        type: 3}
+      propertyPath: exit
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc293899f0b6fc24c83d82d6c63d704e, type: 3}

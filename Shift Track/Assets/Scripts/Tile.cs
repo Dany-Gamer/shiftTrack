@@ -8,6 +8,15 @@ public class Tile : MonoBehaviour
     private bool isDragging;
     private float snapSensitivity = 132f;
 
+    public enum PathLocation {
+        TOP,
+        MIDDLE,
+        BOTTOM
+    }
+
+    public PathLocation entrance;
+    public PathLocation exit;
+
 
     private void Awake()
     {
@@ -36,7 +45,7 @@ public class Tile : MonoBehaviour
         for (int i = 0; i < gameManager.snapPoints.Count; i++)
         {
 
-            if (Vector3.Distance(gameManager.snapPoints[i].transform.position, gameObject.transform.position) < snapSensitivity)
+            if (Mathf.Abs(gameManager.snapPoints[i].transform.position.x - gameObject.transform.position.x) < snapSensitivity)
             {
 
                 Tile tileToSwap = gameManager.GetTileFromSnapPoint(gameManager.snapPoints[i]);
@@ -51,6 +60,8 @@ public class Tile : MonoBehaviour
             }
 
         }
+
+        gameManager.CheckPath();
 
     }
 

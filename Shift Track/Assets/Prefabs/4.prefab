@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -163,6 +164,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454394148687741710, guid: e4f0acc90d388194bb66c23c0a86a50f,
+        type: 3}
+      propertyPath: entrance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454394148687741710, guid: e4f0acc90d388194bb66c23c0a86a50f,
+        type: 3}
+      propertyPath: exit
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4f0acc90d388194bb66c23c0a86a50f, type: 3}

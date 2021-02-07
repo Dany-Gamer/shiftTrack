@@ -78,11 +78,50 @@ public class GameManager : MonoBehaviour
         {
             var segment = Instantiate(segmentPrefabs[i], new Vector2((s), -14f), Quaternion.identity);
             snapPoints[i].transform.position = segment.transform.position;
-            SetTileToSnapPoint(snapPoints[i], segment.GetComponent<Tile>());
+            SetTileToSnapPoint(snapPoints[i], segment.GetComponentInChildren<Tile>());
             segment.transform.SetParent(this.transform);
             segments.Add(segment);
             s += 263f;
         }
+    }
+
+    public bool CheckPath()
+    {
+        for(int i=0; i<=snapPoints.Count; i++)
+        {
+            if (i == 0) //Start block
+            {
+                Tile currentTile = snapPointDictionary[snapPoints[i]];
+                if (currentTile.entrance != Tile.PathLocation.MIDDLE)
+                {
+                    Debug.Log("This is not a valid solution, the first tile does not connect to the starting block.");
+                    return false;
+                }
+            }
+            else if (i == 5) //Finish block
+            {
+                Tile previousTile = snapPointDictionary[snapPoints[i-1]];
+                if (previousTile.exit != Tile.PathLocation.MIDDLE)
+                {
+                    Debug.Log("This is not a valid solution, the last tile does not connect to the finish block.");
+                    return false;
+                }
+            }
+            else //All the other blocks
+            {
+                Tile currentTile = snapPointDictionary[snapPoints[i]];
+                Tile previousTile = snapPointDictionary[snapPoints[i - 1]];
+                if (currentTile.entrance != previousTile.exit)
+                {
+                    Debug.Log("This is not a valid solution, tiles " + (i) + " and " + (i + 1) + " don't match.");
+                    return false;
+                }
+            }
+        }
+
+        //If we have made it here without returning false then we know we have a valid solution
+        Debug.Log("Winner Winner!");
+        return true;
     }
 
 }
