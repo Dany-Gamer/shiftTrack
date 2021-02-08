@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         {
             var segment = Instantiate(segmentPrefabs[i], new Vector2((s), -14f), Quaternion.identity);
             snapPoints[i].transform.position = segment.transform.position;
-            SetTileToSnapPoint(snapPoints[i], segment.GetComponent<Tile>());
+            SetTileToSnapPoint(snapPoints[i], segment.GetComponentInChildren<Tile>());
             segment.transform.SetParent(this.transform);
             segments.Add(segment);
             s += 263f;

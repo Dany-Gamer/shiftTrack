@@ -8,6 +8,12 @@ public class Tile : MonoBehaviour
     private bool isDragging;
     private float snapSensitivity = 132f;
 
+    [Header("Swipe Sound")]
+
+    [SerializeField] AudioClip swipeSound;
+    [SerializeField] [Range(0, 1)] float swipeSoundVolume = 0.5f;
+
+
 
     private void Awake()
     {
@@ -47,6 +53,8 @@ public class Tile : MonoBehaviour
 
                 transform.position = new Vector2(gameManager.snapPoints[i].transform.position.x, transform.position.y);
                 tileToSwap.transform.position = new Vector2(originalSnapPoint.transform.position.x, tileToSwap.transform.position.y);
+
+                AudioSource.PlayClipAtPoint(swipeSound, Camera.main.transform.position, swipeSoundVolume);
 
             }
 

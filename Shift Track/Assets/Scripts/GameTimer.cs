@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     Text timeText;
     int secondsLeft;
-    public bool timeRunning = false;
+    bool timeRunning = false;
 
     void Start()
     {
