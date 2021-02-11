@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6905896280256503086}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 92.26131, z: 0}
-  m_LocalScale: {x: 318.19217, y: 318.14246, z: 318.19217}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -121,3 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7594e5ad02230ca4d8e8e369a19fc1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entrance: 0
+  exit: 1
+  swipeSound: {fileID: 8300000, guid: 863a12cb812d66941a2c909ea3ee1286, type: 3}
+  swipeSoundVolume: 1

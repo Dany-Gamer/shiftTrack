@@ -121,3 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7594e5ad02230ca4d8e8e369a19fc1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entrance: 0
+  exit: 0
+  swipeSound: {fileID: 8300000, guid: 863a12cb812d66941a2c909ea3ee1286, type: 3}
+  swipeSoundVolume: 1

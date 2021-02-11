@@ -17,12 +17,21 @@ public class GameManager : MonoBehaviour
     [Header("Dictionary")]
     private Dictionary<GameObject, Tile> snapPointDictionary;
 
+    PlaySound playSound;
+    Ball ball;
+    Score gameScore;
+
+
+
 
     void Awake()
     {
         RandomizeList();
         DictDec();
         GenerateSegments();
+        ball = FindObjectOfType<Ball>();
+        gameScore = FindObjectOfType<Score>();
+        playSound = FindObjectOfType<PlaySound>();
     }
 
     private void DictDec()
@@ -83,6 +92,72 @@ public class GameManager : MonoBehaviour
             segments.Add(segment);
             s += 263f;
         }
+    }
+
+    private void ResetSegments()
+    {
+        foreach(GameObject seg in snapPoints)
+        {
+            Destroy(snapPointDictionary[seg].transform.parent.gameObject);
+        }
+    }
+
+    public bool CheckPath()
+    {
+        for (int i = 0; i <= snapPoints.Count; i++)
+        {
+            if (i == 0) 
+            {
+                Tile currentTile = snapPointDictionary[snapPoints[i]];
+                if (currentTile.entrance != Tile.PathLocation.MIDDLE)
+                {
+                    Debug.Log("This is not a valid solution, the first tile does not connect to the starting block.");
+                    return false;
+                }
+            }
+            else if (i == 5) 
+            {
+                Tile previousTile = snapPointDictionary[snapPoints[i - 1]];
+                if (previousTile.exit != Tile.PathLocation.MIDDLE)
+                {
+                    Debug.Log("This is not a valid solution, the last tile does not connect to the finish block.");
+                    return false;
+                }
+            }
+            else 
+            {
+                Tile currentTile = snapPointDictionary[snapPoints[i]];
+                Tile previousTile = snapPointDictionary[snapPoints[i - 1]];
+                if (currentTile.entrance != previousTile.exit)
+                {
+                    Debug.Log("This is not a valid solution, tiles " + (i) + " and " + (i + 1) + " don't match.");
+                    return false;
+                }
+            }
+        }
+
+        Debug.Log("Winner Winner!");
+
+        
+        StartCoroutine(ForPause());
+
+        return true;
+    }
+
+    IEnumerator ForPause()
+    {
+        ball.BallMovement();
+        playSound.ScoreSound();
+
+        yield return new WaitForSeconds(1);
+
+        ball.ResetPos();
+        gameScore.AddToScore(1);
+
+        s = -527;
+        ResetSegments();
+        RandomizeList();
+        GenerateSegments();
     }
 
 }

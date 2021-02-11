@@ -5,18 +5,24 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     GameManager gameManager;
-    private bool isDragging;
-    private float snapSensitivity = 132f;
+    PlaySound playSound;
+    bool isDragging = false;
+    float snapSensitivity = 132f;
 
-    [Header("Swipe Sound")]
+    public enum PathLocation
+    {
+        TOP,
+        MIDDLE,
+        BOTTOM
+    }
 
-    [SerializeField] AudioClip swipeSound;
-    [SerializeField] [Range(0, 1)] float swipeSoundVolume = 0.5f;
-
+    public PathLocation entrance;
+    public PathLocation exit;
 
 
     private void Awake()
     {
+        playSound = FindObjectOfType<PlaySound>();
         gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
     }
 
@@ -27,6 +33,7 @@ public class Tile : MonoBehaviour
 
     void Update()
     {
+
         if (isDragging)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -54,12 +61,14 @@ public class Tile : MonoBehaviour
                 transform.position = new Vector2(gameManager.snapPoints[i].transform.position.x, transform.position.y);
                 tileToSwap.transform.position = new Vector2(originalSnapPoint.transform.position.x, tileToSwap.transform.position.y);
 
-                AudioSource.PlayClipAtPoint(swipeSound, Camera.main.transform.position, swipeSoundVolume);
-
+                playSound.PlaySwipeSound();
             }
 
         }
 
+        gameManager.CheckPath();
+
     }
 
 }
+
